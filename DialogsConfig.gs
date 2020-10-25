@@ -66,6 +66,14 @@ const DIALOGS = {
           ['Enter the name, SteamID64 or row number of the staff having their rank chnaged.\nPlease note if you are using name the name must be exact.', decideSearch],
         ],    
         RETURN: removeApp
-    }
+    },
+    
+    CHANGETIME: {
+       HEADER: 'Change Minimum Time',
+       INFO: [
+         ['Please enter the minimum hours you want staff to be on in a week'],
+       ],    
+       RETURN: changeTime
 
+    }
 }
