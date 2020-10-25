@@ -1,7 +1,7 @@
-var ui = SpreadsheetApp.getUi();
 var Dialog = {};
-Dialog.TYPE = ui.ButtonSet.OK_CANCEL;
 Dialog.prompt = function(header, info) {
+  var ui = SpreadsheetApp.getUi();
+  Dialog.TYPE = ui.ButtonSet.OK_CANCEL;
     var uiElement = ui.prompt(header, info, Dialog.TYPE );
     var choice = uiElement.getSelectedButton();
     if (choice == ui.Button.OK) {
@@ -13,6 +13,8 @@ Dialog.prompt = function(header, info) {
 }
 
 Dialog.group = function(header, dialogs) {
+  var ui = SpreadsheetApp.getUi();
+  Dialog.TYPE = ui.ButtonSet.OK_CANCEL;
         var result = [];
         for (i = 0; i < dialogs.length; i++) {
             var response = Dialog.prompt(header, dialogs[i][0], Dialog.TYPE);

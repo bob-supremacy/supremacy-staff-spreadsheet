@@ -5,11 +5,12 @@ var rankChangeList = ss.getSheetByName('Promotion-Demotion List');
 var meetingList = ss.getSheetByName('Staff Meeting Attendance');
 var staffClaimInfo = ss.getSheetByName("Staff Claim Information"); 
 var sheetClaims = ss.getSheetByName("Staff Claims List"); 
-var ui = SpreadsheetApp.getUi();
+
 
 
 
 function onOpen() {
+  var ui = SpreadsheetApp.getUi();
 
   ui.createMenu('Cutom Tools')
 
