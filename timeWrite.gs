@@ -19,7 +19,7 @@ function timeAdder(startRow,endRow){
     var onlineCheck = rank_sheet.getRange(counter,14).getValue(); 
     if (onlineCheck=="Online"){
       var currentTime = rank_sheet.getRange(counter,11);
-      currentTime.setValue(currentTime.getValue()+ 0.166667);   
+      currentTime.setValue(currentTime.getValue() + 1/(24*6));   
     }     
   }
 }
