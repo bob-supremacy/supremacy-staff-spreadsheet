@@ -190,47 +190,18 @@ function searchStaff(searchInput, startRow, endRow, searchColumn){
 
     }
   }  
-
-function claimListRefresh(){
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var claimList = ss.getSheetByName('claimList')
-  var range = claimList.getRange('E1')
-
-  var value = range.getValue()
-  Logger.log(value)
-  if (value == '0'){
-    number = "1";
-  }else{ 
-    number = '0';
-    }
-   range.setValue(number);
-   forceRefreshSheetFormulas()
+// Change Minimum Time Requirment
+function changeTime(response){
+  var sheet = ss.getSheetByName("staffList");
+  var value = response/24
+  for(var i = 9 ; i <= 52 ; i++){
+    sheet.getRange(i, 9).setValue("=IF(ISBLANK(F" + i + "),,IF(K" + i + ">=" + value + ", \"Active\", \"Under Time\"))")
   }
+  for(var i = 56 ; i <= 60 ; i++){
+    sheet.getRange(i, 9).setValue("=IF(ISBLANK(F" + i + "),,IF(K" + i + ">=" + value + ", \"Active\", \"Under Time\"))")
+  }
+  for(var i = 64 ; i <= 73 ; i++){
+    sheet.getRange(i, 9).setValue("=IF(ISBLANK(F" + i + "),,IF(K" + i + ">=" + value + ", \"Active\", \"Under Time\"))")
+  }
+}
 
-
-
-function forceRefreshSheetFormulas() {
-  var range = staffClaimInfo.getRange('D6:F57');
-  var numCols = range.getNumColumns();
-  var numRows = range.getNumRows();
-  var rowOffset = range.getRow();
-  var colOffset = range.getColumn();
-  var originalFormulas = range.getFormulas();
-  
-  for (row = 0; row < numRows ; row++){
-    for(col = 0; col < numCols; col++){
-      if (originalFormulas[row][col] != "") {
-        staffClaimInfo.getRange(row+rowOffset, col+colOffset).setFormula("");
-      }
-    };
-  };
-  SpreadsheetApp.flush();
-  for (row = 0; row < numRows ; row++){
-    for(col = 0; col < numCols; col++){
-      if (originalFormulas[row][col] != "") {
-        staffClaimInfo.getRange(row+rowOffset, col+colOffset).setFormula(originalFormulas[row][col]);
-      }
-    };
-  };
-  SpreadsheetApp.flush();
-};

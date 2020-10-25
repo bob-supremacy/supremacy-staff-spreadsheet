@@ -1,6 +1,7 @@
 var ss = SpreadsheetApp.getActiveSpreadsheet();
 var rank_sheet = ss.getSheetByName("staffList");   
 
+// Defines row starts and ends and triggers the funtion
 function timeRewrite(){   
   var startRow = 9;
   var endRow = 52;
@@ -23,3 +24,39 @@ function timeAdder(startRow,endRow){
     }     
   }
 }
+
+// Time Scripts
+// Resets all Timers
+function resetTime(){
+  resetTimeSS()
+  resetTimeSA()
+  resetTimeFS()
+}
+
+// Resets Server Staffs Timers
+function resetTimeSS(){
+  var yIndex = 9
+  while(yIndex <= 52 && (staffInfoB.getRange(yIndex,4).isBlank() != true)){
+    staffInfoB.getRange(yIndex,11).setValue('0.00');
+    yIndex++;
+  }  
+}
+
+// Resets Forum Staffs Timers
+function resetTimeFS(){
+  var yIndex = 56
+  while(yIndex <= 60 && (staffInfoB.getRange(yIndex,4).isBlank() != true)){
+    staffInfoB.getRange(yIndex,11).setValue('0.00');
+    yIndex++;
+  }  
+}
+
+// Resets Staff Applicants Timers
+function resetTimeSA(){
+  var yIndex = 64
+  while(yIndex <= 73 && (staffInfoB.getRange(yIndex,4).isBlank() != true)){
+    staffInfoB.getRange(yIndex,11).setValue('0.00');
+    yIndex++;
+  }  
+}
+
