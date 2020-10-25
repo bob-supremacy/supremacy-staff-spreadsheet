@@ -35,8 +35,8 @@ function onOpen() {
         .addItem('Reset Time Server Staff','resetTimeSS')
         .addItem('Reset Time Forum Staff','resetTimeFS')
         .addItem('Reset Time Staff Applicants','resetTimeSA'))
-      .addItem('Change Minimum Hours', 'changeTimeInfo'))
-      .addItem('Force TimeAdder','timeRewrite')
+      .addItem('Change Minimum Hours', 'changeTimeInfo')
+      .addItem('Force TimeAdder','timeRewrite'))
       
      .addSubMenu(ui.createMenu('Claims')
        .addItem('Change Minimum Claim Count','claimCountInfo')
