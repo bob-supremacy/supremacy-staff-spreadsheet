@@ -27,5 +27,5 @@ function removeAppInfo(){
 }
 
 function changeTimeInfo(){
-    Dialog.reponse(DIALOGS.CHANGETIME)
+    Dialog.response(DIALOGS.CHANGETIME)
 }

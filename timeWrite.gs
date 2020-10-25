@@ -60,17 +60,3 @@ function resetTimeSA(){
   }  
 }
 
-// Change Minimum Time Requirment
-function changeTime(response){
-  var sheet = ss.getSheetByName("staffList");
-  var value = response/24
-  for(var i = 9 ; i <= 52 ; i++){
-    sheet.getRange(i, 9).setValue("=IF(NOT(ISBLANK(D" + i + ")), IF(K" + i + " = 0, \"Not Seen\",IF(K" + i + " >= " + value + ",\"Active\", \"Under Time\")),)")
-  }
-  for(var i = 56 ; i <= 60 ; i++){
-    sheet.getRange(i, 9).setValue("=IF(NOT(ISBLANK(D" + i + ")), IF(K" + i + " = 0, \"Not Seen\",IF(K" + i + " >= " + value + ",\"Active\", \"Under Time\")),)")
-  }
-  for(var i = 64 ; i <= 73 ; i++){
-    sheet.getRange(i, 9).setValue("=IF(NOT(ISBLANK(D" + i + ")), IF(K" + i + " = 0, \"Not Seen\",IF(K" + i + " >= " + value + ",\"Active\", \"Under Time\")),)")
-  }
-}
