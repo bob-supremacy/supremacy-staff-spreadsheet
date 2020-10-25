@@ -192,6 +192,7 @@ function searchStaff(searchInput, startRow, endRow, searchColumn){
   }  
 
 function claimListRefresh(){
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
   var claimList = ss.getSheetByName('claimList')
   var range = claimList.getRange('E1')
 
@@ -203,5 +204,33 @@ function claimListRefresh(){
     number = '0';
     }
    range.setValue(number);
+   forceRefreshSheetFormulas()
   }
 
+
+
+function forceRefreshSheetFormulas() {
+  var range = staffClaimInfo.getRange('D6:F57');
+  var numCols = range.getNumColumns();
+  var numRows = range.getNumRows();
+  var rowOffset = range.getRow();
+  var colOffset = range.getColumn();
+  var originalFormulas = range.getFormulas();
+  
+  for (row = 0; row < numRows ; row++){
+    for(col = 0; col < numCols; col++){
+      if (originalFormulas[row][col] != "") {
+        staffClaimInfo.getRange(row+rowOffset, col+colOffset).setFormula("");
+      }
+    };
+  };
+  SpreadsheetApp.flush();
+  for (row = 0; row < numRows ; row++){
+    for(col = 0; col < numCols; col++){
+      if (originalFormulas[row][col] != "") {
+        staffClaimInfo.getRange(row+rowOffset, col+colOffset).setFormula(originalFormulas[row][col]);
+      }
+    };
+  };
+  SpreadsheetApp.flush();
+};
