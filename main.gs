@@ -193,16 +193,15 @@ function searchStaff(searchInput, startRow, endRow, searchColumn){
 
 function claimListRefresh(){
   var claimList = ss.getSheetByName('claimList')
-  range = claimList.getRange('E1')
-  value = range.getValue
-  if (value = '0'){
-    range.setValue('1')
-  }else{
-    if (value = '1'){
-      range.setValue('0')
+  var range = claimList.getRange('E1')
+
+  var value = range.getValue()
+  Logger.log(value)
+  if (value == '0'){
+    number = "1";
+  }else{ 
+    number = '0';
     }
-    
+   range.setValue(number);
   }
-  
-}
 
