@@ -198,7 +198,10 @@ function claimListRefresh(){
   if (value = '0'){
     range.setValue('1')
   }else{
-    range.setValue('0')
+    if (value = '1'){
+      range.setValue('0')
+    }
+    
   }
   
 }
