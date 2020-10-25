@@ -36,10 +36,15 @@ function onOpen() {
         .addItem('Reset Time Forum Staff','resetTimeFS')
         .addItem('Reset Time Staff Applicants','resetTimeSA'))
       .addItem('Change Minimum Hours', 'changeTime'))
+      .addItem('Force TimeAdder','timeRewrite')
       
      .addSubMenu(ui.createMenu('Claims')
        .addItem('Change Minimum Claim Count','claimCountInfo')
        .addItem('Log Weekly Claims','claimLog'))
+
+      .addSubMenu(ui.createMenu('Refresh')
+        .addItem('Force Refresh playerList','playerList')
+        .addItem('Force Refresh claimList','claimListRefresh'))
       
   .addToUi();
 }

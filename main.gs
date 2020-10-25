@@ -190,3 +190,16 @@ function searchStaff(searchInput, startRow, endRow, searchColumn){
 
     }
   }  
+
+function claimListRefresh(){
+  var claimList = ss.getSheetByName('claimList')
+  range = claimList.getRange('E1')
+  value = range.getValue
+  if (value = '0'){
+    range.setValue('1')
+  }else{
+    range.setValue('0')
+  }
+  
+}
+
