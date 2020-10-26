@@ -43,8 +43,8 @@ function onOpen() {
        .addItem('Log Weekly Claims','claimLog'))
 
       .addSubMenu(ui.createMenu('Refresh')
-        .addItem('Force Refresh playerList','playerList')
-        .addItem('Force Refresh claimList','claimListRefresh')
+        .addItem('Force Refresh playerList','getPlayerListArray')
+        .addItem('Force Refresh claimList','getClaimListArray')
         .addItem('Force Refresh Cell Queries','forceRefreshSheetFormulas'))
       
   .addToUi();
