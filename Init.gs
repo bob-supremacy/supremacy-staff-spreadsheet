@@ -44,7 +44,8 @@ function onOpen() {
 
       .addSubMenu(ui.createMenu('Refresh')
         .addItem('Force Refresh playerList','playerList')
-        .addItem('Force Refresh claimList','claimListRefresh'))
+        .addItem('Force Refresh claimList','claimListRefresh')
+        .addItem('Force Refresh Cell Queries','forceRefreshSheetFormulas'))
       
   .addToUi();
 }

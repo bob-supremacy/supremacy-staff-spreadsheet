@@ -13,6 +13,7 @@ function addNewStaffApp(response){
   staffInfoB.getRange(yIndex+1, 11).setValue(0);
   staffInfoB.getRange(yIndex+1, 16).setValue(response[3]);
   staffInfoB.getRange(yIndex+1, 23).setValue(response[4]);
+  SpreadsheetApp.flush();
   appSort();
 }
 
@@ -29,6 +30,7 @@ function addToDemoList(response){
   dischargeList.getRange(yIndex, 5, 1, 6).setValues(dischargeInfo);
   removeStaff(response[0]);
   removeStaffMeet(name);
+  SpreadsheetApp.flush();
   backendSort();
 }
 
@@ -47,6 +49,8 @@ function rankChange(response){
   var results = [[staffName,rankChangeType,oldRank[0][0],response[2],dateToday,response[3],response[4]]];
   rankChangeList.getRange(yIndex,3,1,7).setValues(results); 
   staffInfoB.getRange(response[0],7).setValue(response[2]);
+  SpreadsheetApp.flush();
+  backendSort();
 }
 
 // Staff Meeting Attendance
@@ -79,6 +83,7 @@ function removeStaffMeet(name){
       meetingList.getRange(currentIndex,3,1,15).clearContent();
       meetingList.getRange(currentIndex,3,1,15).setDataValidation(null);
    } 
+  SpreadsheetApp.flush();
   meetSort();
 }  
   
@@ -115,6 +120,7 @@ function acceptStaff(args){
     trainer = "PENDING";
   }
   var response = [staffName,staffID, trainer];
+  SpreadsheetApp.flush();
   addNewStaff(response);
   removeApp(staffIndex);
 }
@@ -126,6 +132,7 @@ function removeApp(appIndex){
   staffInfoB.getRange(appIndex, 11).clear({contentsOnly: true});
   staffInfoB.getRange(appIndex, 16).clear({contentsOnly: true});
   staffInfoB.getRange(appIndex, 21, 1, 3).clear({contentsOnly: true});
+  SpreadsheetApp.flush();
   appSort();
 }
 
@@ -187,6 +194,7 @@ function searchStaff(searchInput, startRow, endRow, searchColumn){
     }
    if(foundFlag == true){
      return currentIndex
+   Logger.log(currentIndex)
 
     }
   }  
