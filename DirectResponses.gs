@@ -25,3 +25,7 @@ function claimCountInfo(){
 function removeAppInfo(){
     Dialog.response(DIALOGS.REMOVEAPP)
 }
+
+function changeTimeInfo(){
+    Dialog.response(DIALOGS.CHANGETIME)
+}
